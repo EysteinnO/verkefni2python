@@ -1,7 +1,6 @@
-# -*- coding: cp1252 -*-
-
 from bottle import *
 import os
+
 @route('/')
 def index():
     return '''
@@ -25,11 +24,11 @@ def index(id):
     if id == "sida3":
         return "Her er ", id
     if id == "mynd1":
-        return "Her er mynd ", id, "<br><img src='myndir/One.png'>"
+        return "Her er mynd ", id, "<br><img src='../myndir/One.png'>"
     if id == "mynd2":
-        return "Her er mynd ", id, "<br><img src='myndir/Two.png'>"
+        return "Her er mynd ", id, "<br><img src='../myndir/Two.png'>"
     if id == "mynd3":
-        return "Her er mynd ", id, "<br><img src='myndir/Three.png'>"
+        return "Her er mynd ", id, "<br><img src='../myndir/Three.png'>"
 
 
 def page():
@@ -38,7 +37,7 @@ def page():
 @route('/gaman')
 def index():
     x = request.query.tala
-    return "Şetta er gildi breytunnar tala", x
+    return "Ãetta er gildi breytunnar tala", x
 
 @route('/myndir/<nafn>')
 def myndir_static(nafn):
@@ -46,6 +45,6 @@ def myndir_static(nafn):
 
 @error(404)
 def villa(error):
-    return "<br><h1>Şessi síğa er ekki til</h1>"
-
-run(host="localhost", port=8080);
+    return "<br><h1>Ãessi sÃ­Ã°a er ekki til</h1>"
+#run()
+run(host="0.0.0.0", port=os.environ.get('PORT'))
